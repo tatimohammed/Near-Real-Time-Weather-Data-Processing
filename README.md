@@ -15,3 +15,44 @@ In this project we are trying to learn diffrent technologies from the `back-end`
     - `Kafka`, `Spark` and `Cassandra`: that is the near-real time data processing team :)
     - `Dashboard Update`: Still working on it. Not supported in the `v1.0.1`.
 
+### Devoloper Guide:
+In order to run the code on your local machine you can clone the repository:
+```bash
+git clone https://github.com/tati2002med/Near-Real-Time-Weather-Data-Processing.git
+cd Near-Real-Time-Weather-Data-Processing
+```
+we need some requirements `Zookeeper`, `Kafka`, `Spark` and `Cassandra` you can get them by running the docker compose file:
+```bash
+sudo docker-compose up -d
+```
+the **-d** just to not display the logs so you don't have to run another terminal.
+
+For the spark container you can run this command:
+```bash
+sudo docker run --name spark-container --net put-the-same-network-name-that-the-services-running-in -it apache/spark:v3.2.3 /opt/spark/bin/spark-shell
+```
+
+if you don't know the network that the services are using you can run:
+```bash
+sudo docker inspect kafka-or-cassandra-container-name-just-one-of-them
+```
+
+To check that the the services are running use:
+```bash
+sudo docker ps
+```
+They should be up and running.
+
+Now, you can choose to run the code by yourself or create a docker image from the app. here is how you can do it:
+```bash
+sudo docker build -t name-your-image:tag-image .
+```
+We told docker to create an image from a dockerfile exist in the current directory .
+
+Now, lets create a container for our app:
+```bash
+sudo docker run --name weather-api-v1 --net put-the-same-network-name-that-the-services-running-in -p 8080:8080 name-your-image:tag-image
+```
+Now, you can access the app over: **http://localhost:8080**
+
+Enjoy :)
