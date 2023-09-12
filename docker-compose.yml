@@ -1,0 +1,37 @@
+version: '3.1'
+services:
+  cassandra:
+    image: cassandra
+    container_name: cassandra_tati
+    ports:
+      - "9042:9042"
+    networks:
+      - weather-net  
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: zookeeper_tati
+    ports:
+      - "2182:2181"
+    networks:
+      - weather-net
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka_tati
+    ports:
+      - "9092:9092"  # Map Kafka's port to your host machine
+    depends_on:
+      - zookeeper
+    networks:
+      - weather-net
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092  # Use the same listener name
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"  # Disable automatic topic creation
+
+networks:
+  weather-net:

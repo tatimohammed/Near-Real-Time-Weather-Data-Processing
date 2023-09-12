@@ -1,0 +1,11 @@
+/home/ubuntu/Weather-app/src/main/java/com/tati/backend/service/WeatherServiceImpl.java
+/home/ubuntu/Weather-app/src/main/java/com/tati/backend/model/Weather.java
+/home/ubuntu/Weather-app/src/main/java/com/tati/dao/CassandraRepo.java
+/home/ubuntu/Weather-app/src/main/java/com/tati/backend/api/WeatherData.java
+/home/ubuntu/Weather-app/src/main/java/com/tati/backend/api/WeatherAPI.java
+/home/ubuntu/Weather-app/src/main/java/com/tati/backend/config/KafkaProducerConf.java
+/home/ubuntu/Weather-app/src/main/java/com/tati/backend/config/KafkaTopicConf.java
+/home/ubuntu/Weather-app/src/main/java/com/tati/backend/service/WeatherService.java
+/home/ubuntu/Weather-app/src/main/java/com/tati/backend/config/SparkConf.java
+/home/ubuntu/Weather-app/src/main/java/com/tati/backend/BackEndApplication.java
+/home/ubuntu/Weather-app/src/main/java/com/tati/backend/controller/WeatherController.java
