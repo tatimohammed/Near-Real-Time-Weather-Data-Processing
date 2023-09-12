@@ -1,0 +1,14 @@
+#title{
+    opacity: 0.8;
+    border-radius: 50px;
+}
+#title h1{
+    color: #281663;
+}
+@media only screen and (max-width: 1366px) {
+    #title h1{
+        font-size: 25px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}

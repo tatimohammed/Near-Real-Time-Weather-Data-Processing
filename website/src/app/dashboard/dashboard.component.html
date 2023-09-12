@@ -1,0 +1,85 @@
+<div class="text-center mt-2 bg-white w-25 m-auto p-2" id="input">
+    <form (ngSubmit)="onSubmit()" novalidate>
+        <div class="row text-center">
+            <div class="col-10">
+                <input type="text" name="city-name" id="city-name" placeholder="Enter your city name ..."
+                    [(ngModel)]="cityName" (keyup.enter)="onSubmit()">
+            </div>
+            <div class="col-2">
+                <label for="submit" id="send">
+                    <i class="bi bi-send-fill"></i>
+                </label>
+                <input type="submit" name="select" id="submit" style="display: none;">
+            </div>
+        </div>
+    </form>
+</div>
+<div *ngIf="isLoading" class="loading-container">
+    <!-- Display loading spinner while isLoading is true -->
+    <div class="spinner-border text-primary spinner" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<div *ngIf="weatherData" class="container mt-5" id="dashboard">
+    <div class="row text-center m-auto">
+        <div class="col-6">
+            <div class="row mb-2" id="temp">
+                <h3 class="text-center mt-3">Temperature</h3>
+                <div class="row">
+                    <div class="col-6" id="min">
+                        <h4 class="text-center">FEELS LIKE</h4>
+                        <p class="text-center"><span>{{ weatherData.feelsLike }}</span> °C</p>
+                    </div>
+                    <div class="col-6" id="value">
+                        <h4 class="text-center">CURRENT</h4>
+                        <p class="text-center"><span>{{ weatherData.temperature }}</span> °C</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row mb-2" id="wind">
+                <h3 class="text-center mt-3">Wind</h3>
+                <div class="row">
+                    <div class="col-6 m-auto" id="speed">
+                        <h4 class="text-center">SPEED</h4>
+                        <p class="text-center"><span>{{ weatherData.speed }}</span> m/s</p>
+                    </div>
+                    <div class="col-6" id="wind-data">
+                        <div class="row mb-2">
+                            <h4 class="text-center">DIRECTION</h4>
+                            <p class="text-center">{{weatherData.directionName}}</p>
+                        </div>
+                        <div class="row">
+                            <h4 class="text-center">STATUS</h4>
+                            <p class="text-center">{{weatherData.speedName}}</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6" id="weather" [style.background-image]="getWeatherIconBackgroundUrl(weatherData.weatherIcon)">
+            <h3 class="text-center mt-3 bg-white p-2">Weather</h3>
+            <div class="w-50 text-lg-start bg-white" id="weather-data">
+                <img [src]="getWeatherIconUrl(weatherData.weatherIcon)">
+                <h3 class="p-2"><span>{{ weatherData.name }}</span>, <span>{{ weatherData.country }}</span><br><span
+                     id="weather-value">{{weatherData.weatherValue}}</span></h3>
+                <p class="p-2"><b>Humidity: </b><span>{{weatherData.humidity}}</span>%,<b> Pressure:
+                    </b><span>{{weatherData.pressure}}</span> hPa</p>
+            </div>
+
+        </div>
+    </div>
+    <div class="row text-center" id="other">
+        <div class="col-3 m-auto">
+            <h4>Sunrise: <span style="font-weight: 300;">{{weatherData.sunrise}}</span></h4>
+        </div>
+        <div class="col-3 m-auto">
+            <h4>Sunset: <span style="font-weight: 300;">{{weatherData.sunset}}</span></h4>
+        </div>
+        <div class="col-6 m-auto">
+            <h4>Dashboard last update: <span style="font-weight: 300;">{{weatherData.lastUpdate}}</span></h4>
+        </div>
+    </div>
+</div>
