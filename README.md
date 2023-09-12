@@ -15,6 +15,7 @@ In this project we are trying to learn diffrent technologies from the `back-end`
     - `Kafka`, `Spark` and `Cassandra`: that is the near-real time data processing team :)
     - `Dashboard Update`: Still working on it. Not supported in the `v1.0.1`.
 
+To try the app go to: https://tati2002med.github.io/weather-app/
 ### Developer Guide:
 In order to run the code on your local machine you can clone the repository:
 ```bash
@@ -55,4 +56,29 @@ sudo docker run --name weather-api-v1 --net put-the-same-network-name-that-the-s
 ```
 Now, you can access the app over: **http://localhost:8080**
 
-Enjoy :)
+- if you want to change the varibale envirements you can change them use **-e** tag in running command. here is the varibales that you can adjust:
+  ```bash
+    CASSANDRA_CONTACT_POINTS=cassandra
+    CASSANDRA_KEYSPACE=weather
+    CASSANDRA_PORT=9042
+    
+    KAFKA_BOOTSTRAP_SERVERS=localhost
+    KAFKA_PORT=29092
+    
+    SPARK_MASTER=local[*]
+  ```
+  you can do it like this:
+  ```bash
+  sudo docker run --name weather-api-v1 --net put-the-same-network-name-that-the-services-running-in -e CASSANDRA_CONTACT_POINTS=new_cassandra -e KAFKA_PORT=new_port -p 8080:8080 name-your-image:tag-image
+  ```
+- The last thing don't forget to create a keyspace with same name in your cassandra container:
+  ```bash
+    sudo docker exec -it cassandra-container-ip cqlsh
+  ```
+  Now create it:
+  ```bash
+  CREATE KEYSPACE IF NOT EXISTS weather
+    WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+  ```
+    
+Enjoy developing the app and happy learning :)
