@@ -1,5 +1,5 @@
 # Near Real-Time Weather Data Processing
-`v1.0.0`
+`v1.0.1`
 
 ![Near Real-Time Weather Data Processing](https://github.com/tati2002med/Near-Real-Time-Weather-Data-Processing/assets/95311883/9e8e3249-a890-43b9-bb61-f1c7e5151aa7)
 
@@ -13,5 +13,5 @@ In this project we are trying to learn diffrent technologies from the `back-end`
     - `AWS GATEWAY API`: an AWS service for creating, publishing, maintaining, monitoring, and securing REST, HTTP, and WebSocket APIs at any scale. We used it secure the connection between the VM and the front-end that is deployed over `GitHub pages`.
     - `Angular`: a TypeScript-based, free and open-source single-page web application framework. We used it to communicate between our `Spring Boot Api` and the `User Interface`.
     - `Kafka`, `Spark` and `Cassandra`: that is the near-real time data processing team :)
-    - `Dashboard Update`: Still working on it. Not supported in the `v1.0.0`.
+    - `Dashboard Update`: Still working on it. Not supported in the `v1.0.1`.
 
