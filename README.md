@@ -15,7 +15,7 @@ In this project we are trying to learn diffrent technologies from the `back-end`
     - `Kafka`, `Spark` and `Cassandra`: that is the near-real time data processing team :)
     - `Dashboard Update`: Still working on it. Not supported in the `v1.0.1`.
 
-### Devoloper Guide:
+### Developer Guide:
 In order to run the code on your local machine you can clone the repository:
 ```bash
 git clone https://github.com/tati2002med/Near-Real-Time-Weather-Data-Processing.git
